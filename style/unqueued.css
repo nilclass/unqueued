@@ -1,0 +1,140 @@
+/** 
+ ** Guidelines:
+ **   - one rule per line
+ **   - less specific rules follow more specific ones
+ **   - colon and comma are followed by a single whitespace
+ **   - keep rules in alphabetical order
+ **   - specify font-size in em, except for the body.
+ **
+ **/
+
+/** GLOBAL **/
+
+body {
+    font-family: Helvetica, sans-serif;
+    font-size: 14px;
+}
+
+
+/** RESET **/
+
+* {
+    cursor: default;
+    font-size: 1em;
+    font-style: normal;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+/** FORMS, BUTTONS **/
+
+input[type="text"], input[type="password"] {
+    border: solid 1px #212121;
+    cursor: text;
+    padding: 0.5em;
+    user-select: all;
+}
+
+button {
+    background: #212121;
+    border: solid 1px #212121;
+    color: #a5a5a5;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 0.5em 1em;
+    margin-right: 0.5em;
+}
+
+button:hover {
+    background: #424242;
+}
+
+/** CONTENT **/
+
+.formatted-text {
+    white-space: pre;
+}
+
+#root-content h2 {
+    background: #212121;
+    color: #737373;
+    font-size: 1.3em;
+    margin-bottom: 1em;
+    padding: 0.25em 0.5em;
+
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+}
+
+
+/** VIEWS **/
+
+.message-list .container-item {
+    height: 2.5em;
+    line-height: 2.5em;
+    position: relative;
+}
+
+.message-list .container-item .body {
+    background: white;
+    border: solid 2px #212121;
+    border-radius: 0.5em;
+    width: 30em;
+    padding: 1em;
+    position: absolute;
+    top: 0em;
+    left: 15em;
+}
+
+.message-list .container-item .subject {
+    cursor: pointer;
+    padding: 0 1em;
+    vertical-align: middle;
+}
+
+#compose {
+    border-color: #212121;
+    border-style: none solid;
+    border-width: 1px;
+    margin: 1em;
+    width: 32em;
+}
+
+
+#compose .input {
+    clear: both;
+    margin-top: 0.5em;
+}
+
+#compose .input input {
+    width: 20em;
+}
+
+#compose .input label {
+    display: block;
+    float: left;
+    line-height: 2.5em;
+    text-indent: 1em;
+    vertical-align: middle;
+    width: 10em;
+}
+
+#compose .input textarea {
+    border-style: solid none;
+    height: 20em;
+    width: 100%;
+}
+
+#compose .button-group {
+    margin: 1em 0;
+    text-align: center;
+}
+
+/** TREE **/
+
+#messages_tree .container-item {
+    padding-left: 1em;
+}
