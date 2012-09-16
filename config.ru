@@ -1,6 +1,9 @@
 # -*- mode: ruby -*-
 
-require 'sinatra/base'
+require 'rubygems'
+require 'bundler'
+
+Bundler.require
 
 class App < Sinatra::Base
   set :public_folder, '.'
@@ -10,6 +13,8 @@ class App < Sinatra::Base
   end
 end
 
+
+## DEVELOPMENT HACK:
 class NoCache
   def initialize(app)
     @app = app

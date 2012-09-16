@@ -1,0 +1,51 @@
+
+* unqueued
+
+** What is this?
+
+This is an [[http://unhosted.org][unhosted web app]] for basic messaging. It uses [[http://remotestoragejs.com][remoteStorage.js]] to sync data via the [[http://remotestorage.io][remotestorage protocol]]. You can use it to read your email.
+
+** Overview
+
+There are three parts to this app:
+- a server that delivers the app to the browser and does nothing else,
+- the app itself, which is client-side javascript, and
+- a SMTP bridge, which is a plugin for the [[http://haraka.github.com/][Haraka]] SMTP Server, written in server-side Javascript.
+
+The storage itself is brought by the user. Currently the user also needs to setup the STMP bridge theirselves.
+
+*** Server side
+
+A simple static webserver. Instead of 404, it falls back to 200 and delivers index.html. That way URLs created by [[http://www.w3.org/TR/html5/history.html#dom-history-pushstate][history.pushState]] still resolve to start the app.
+Implemented in [[http://ruby-lang.org/][Ruby]] ([[http://sinatrarb.com][Sinatra]]).
+
+*Setup* (assuming you have a working ruby and rubygems installation):
+#+BEGIN_SRC
+gem install bundler
+bundle
+#+END_SRC
+
+*Start*:
+#+BEGIN_SRC
+rackup
+#+END_SRC
+
+By default it listens on [[http://localhost:9292][localhost:9292]], use "-p 80" to run on default HTTP port. You may need root privileges to do that.
+
+*** Client side
+
+All the boring stuff (router, basic views, ...) is within [[https://github.com/nilclass/unqueued/tree/master/src/framework][src/framework]].
+
+A remoteStorage messages module is drafted in [[https://github.com/nilclass/unqueued/tree/master/src/remoteStorage-messages.js][src/remoteStorage-messages.js]].
+
+[[https://github.com/nilclass/unqueued/tree/master/src/models/message.js][src/models/message.js]] contains glue code between app and messages module.
+
+To figure out the rest, run the app and browse the code.
+
+*** Bridge to SMTP
+
+See my [[https://github.com/nilclass/Haraka][Haraka fork]], it contains a plugin called "queue/remotestorage.js". Alter config/remotestorage.ini to add your remotestorage credentials. The default configuration should work with the [[http://github.com/RemoteStorage/remoteStorage.js/tree/master/server/][remotestorage example server]].
+
+*** License
+
+Not sure yet.
