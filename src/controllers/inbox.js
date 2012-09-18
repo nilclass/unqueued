@@ -60,7 +60,7 @@ define(['framework/controller', 'models/message', 'views/messages'], function(Co
           this.jump('');
         }
       }
-      
+
     }
 
   });
