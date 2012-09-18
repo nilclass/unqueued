@@ -64,8 +64,6 @@ define(['framework/views'], function(views) {
       return false;
     });
 
-    this.updateData(model);
-
   }, {
 
     labels: {
@@ -75,6 +73,10 @@ define(['framework/views'], function(views) {
       send: "Send",
       close: "Close Editor",
       save: "Save Draft"
+    },
+
+    getAttribute: function(key) {
+      return this.model.attr(key);
     }
 
   });

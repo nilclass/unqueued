@@ -27,7 +27,7 @@ define(['framework/controller', 'models/message', 'views/messages'], function(Co
       },
 
       compose: function(req) {
-        var id = req.params['*'][0];
+        var id = req.params['*'] && req.params['*'][0];
 
         var message = id ? Message.get(id) : new Message();
 

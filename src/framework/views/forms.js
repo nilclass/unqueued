@@ -16,19 +16,20 @@ define(['framework/views/base', 'lib/underscore'], function(views) {
     this.name = name;
     this.type = type;
 
-    var input = this.createInputField().attr('id', inputId);
+    this.input = this.createInputField().attr('id', inputId);
 
-    this.append(input);
+    this.append(this.input);
 
-    input.on('blur', _.bind(function(event) {
+    this.input.on('blur', _.bind(function(event) {
       console.log('BLUR', this);
-      this.form.updateAttribute(this.name, input.getValue());
+      this.form.updateAttribute(this.name, this.input.getValue());
     }, this));
 
   }, {
 
     bind: function(form) {
       this.form = form;
+      this.input.setValue(this.form.getAttribute(this.name));
       return this;
     },
 
@@ -67,6 +68,10 @@ define(['framework/views/base', 'lib/underscore'], function(views) {
 
     updateAttribute: function(key, value) {
       console.log('updateAttribute', key, value);
+    },
+
+    getAttribute: function(key) {
+      throw "Not implemented: getAttribute(key)";
     },
 
     getInputLabel: function(name) {

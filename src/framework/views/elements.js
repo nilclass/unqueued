@@ -77,7 +77,12 @@ define(['framework/views/base', 'lib/underscore'], function(views) {
   }, {
     getValue: function() {
       return this.root.value;
+    },
+
+    setValue: function(value) {
+      this.root.value = value || '';
     }
+
   });
 
   views.extend('CheckboxElement', 'InputField', function(name) {
