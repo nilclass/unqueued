@@ -1147,7 +1147,9 @@ define('lib/sync',['./wireClient', './store'], function(wireClient, store) {
   function syncNow(path, callback) {
 
     if(wireClient.getState() == 'anonymous') {
-      callback(['not connected']);
+      if(callback) {
+        callback(['not connected']);
+      }
       return;
     }
 
